@@ -59,9 +59,9 @@ class _layoutState extends State<layout> {
                     
                   });
                 }
-
+            
               ),
-
+            
               items: productImages.map((items){
                 return Builder(
                   builder: (BuildContext context){
@@ -89,20 +89,28 @@ class _layoutState extends State<layout> {
                         padding: const EdgeInsets.fromLTRB(10, 5, 0, 5),
                         child: Text('${productName[current_title]}',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold,)),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(10, 0, 5, 10),
-                        child: Row(
-                          children: [
-                            Icon(Icons.star,color: Colors.amber,),
-                            Icon(Icons.star,color: Colors.amber,),
-                            Icon(Icons.star,color: Colors.amber,),
-                            Icon(Icons.star,color: Colors.amber,),
-                            Icon(Icons.star,color: Colors.amber,),
-                            Padding(
-                              padding: const EdgeInsets.only(left: 5),
-                              child: Text("5.0 (23 Reviews)"),
-                            )
-                          ],
+                      Expanded(
+                        child: Padding(
+                          padding: const EdgeInsets.fromLTRB(10, 0, 5, 10),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            
+                            children: [
+                              Row(
+                                children: [
+                              Icon(Icons.star,color: Colors.amber,size: 18,),
+                              Icon(Icons.star,color: Colors.amber,size: 18,),
+                              Icon(Icons.star,color: Colors.amber,size: 18,),
+                              Icon(Icons.star,color: Colors.amber,size: 18,),
+                              Icon(Icons.star,color: Colors.amber,size: 18,),
+                                ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(left: 5),
+                                child: Text("5.0 (23 Reviews)",style: TextStyle(fontSize: 15),),
+                              )
+                            ],
+                          ),
                         ),
                       ),
                   ],
@@ -154,50 +162,54 @@ GridView.count(
               crossAxisCount: 2,
               // crossAxisSpacing: 5,
               mainAxisSpacing: 5,
+              crossAxisSpacing: 2,
               children: List.generate(productName.length, (index){
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 5),
-                  child: Card(
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            // color: Colors.amber,
-                            borderRadius: BorderRadius.circular(10),
-                            // color: Colors.amber
-                          ),
-                          height: MediaQuery.of(context).size.height*0.185,
-                          width: MediaQuery.of(context).size.width,
-                          clipBehavior: Clip.hardEdge,
-                          child: Image.asset(productImages[index],fit: BoxFit.cover,),
+                return Card(
+                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                          // color: Colors.amber,
+                          borderRadius: BorderRadius.circular(10),
+                          // color: Colors.amber
                         ),
-                        Container(
-                          margin: EdgeInsets.only(left: 5),
-                          child: Text(productName[index],style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        height: MediaQuery.of(context).size.height*0.185,
+                        width: MediaQuery.of(context).size.width,
+                        clipBehavior: Clip.hardEdge,
+                        child: Image.asset(productImages[index],fit: BoxFit.cover,),
+                      ),
+                      Container(
+                        margin: EdgeInsets.only(left: 5),
+                        child: Text(productName[index],style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),)),
+                      Expanded(
+                        child: Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Row(
-                             children: [
-                            Icon(Icons.star,size: 15,color: Colors.amber,),
-                            Icon(Icons.star,size: 15,color: Colors.amber,),
-                            Icon(Icons.star,size: 15,color: Colors.amber,),
-                            Icon(Icons.star,size: 15,color: Colors.amber,),
-                            Icon(Icons.star,size: 15,color: Colors.amber,),
-                             ],
+                            Padding(
+                              padding: const EdgeInsets.only(left: 5),
+                              child: Row(
+                               children: [
+                              Icon(Icons.star,size: 10,color: Colors.amber,),
+                              Icon(Icons.star,size: 10,color: Colors.amber,),
+                              Icon(Icons.star,size: 10,color: Colors.amber,),
+                              Icon(Icons.star,size: 10,color: Colors.amber,),
+                              Icon(Icons.star,size: 10,color: Colors.amber,),
+                               ],
+                              ),
                             ),
                             Container(
                               margin: EdgeInsets.only(left: 5),
-                              child: Text('5.0 (23 Reviews)'))
+                              child: Text('5.0 (23 Reviews)',style: TextStyle(fontSize: 12),))
                           ],
-                        )
-                      ],
-                    ),
-              ),
-                );
+                        ),
+                      )
+                    ],
+                  ),
+              );
               }
               ) 
               ),
